@@ -1,30 +1,30 @@
 const form = document.getElementById("contact-form");
 
+const fname = document.getElementById("fullName");
 
-const fname = document.getElementById("fullName").value;
+const message = document.getElementById("message");
 
-const message = document.getElementById("message").value;
-
-const errorElement = document.querySelector(".error");
+document.body.addEventListener("load", function() {
+    fname.focus();
+    message.focus();
+});
 
 form.addEventListener("submit", (e) => {
     
-    // let messages = [];
-    let patt = /[a-zA-Z]/;
-    // check name field and message field
-
-    if (patt.test(fname) && patt.test(message)) {
-        alert("Thank you for leaving a us a comment");
-        // refresh();
-
-    } else {
-        alert("Name and comment most only be compose of english alphabets characters");
-        // refresh();
-    } 
     e.preventDefault();
     
-    function refresh() {
-        location.reload();
+    if (fname.value === "" || message.value === "") {
+        alert("Please! Provide us your name and leave a little comment");
+        keepFocus();
+    } else {
+        alert("Thank you for contacting us");
     }
 
+
 });
+
+function keepFocus() {
+    fname.focus();
+    message.focus();
+}
+
