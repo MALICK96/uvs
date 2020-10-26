@@ -1,30 +1,41 @@
-const form = document.getElementById("contact-form");
 
-const fname = document.getElementById("fullName");
 
-const message = document.getElementById("message");
+document.addEventListener("DOMContentLoaded", function(e) { 
+    const name = document.getElementById("fname");
+    const message = document.getElementById("message");
+    const form = document.getElementById("contact-form");
+    let patt = /^[a-zA-Z ]+$/;
 
-document.body.addEventListener("load", function() {
-    fname.focus();
-    message.focus();
-});
+    name.addEventListener("blur", function() {
+        if (patt.test(name.value)) {
+        document.getElementById("fname").classList.add("success");
+        } else {
+            document.getElementById("fname").classList.add("error");
+        }
+    });
 
-form.addEventListener("submit", (e) => {
-    
-    e.preventDefault();
-    
-    if (fname.value === "" || message.value === "") {
-        alert("Please! Provide us your name and leave a little comment");
-        keepFocus();
-    } else {
-        alert("Thank you for contacting us");
+
+    function checkName(name) {
+        return patt.test(name);
     }
 
+   function checkMessage(str) {
+        return patt.test(str);
+    }
+
+    form.addEventListener("submit", function(e) {
+        let res1 = checkName(document.getElementById("fname").value);
+        let res2 = checkMessage(document.getElementById("message").value);
+
+        if (res1 && res2) {
+            alert("Thank you for leaving Us a message");
+        } else {
+            alert("Please! Enter only alphabet character in the fields");
+            e.preventDefault();
+        }
+    });
+
 
 });
-
-function keepFocus() {
-    fname.focus();
-    message.focus();
-}
+  
 

@@ -185,9 +185,17 @@ textarea:focus {
   padding: 15px;
 }
 
+/* Triggered by Javascri[t */
+.success {
+  border: 1px solid rgb(50, 165, 50);
+}
+
+.error {
+  border: 1px solid rgb(255, 0, 0);
+}
 /* Media Query Mobile and Tablet */
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 700px) {
   .header {
     width: 50%;
     margin: 25px;
